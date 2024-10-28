@@ -428,6 +428,7 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    image: Attribute.Media<'images'> & Attribute.Required;
     name: Attribute.String & Attribute.Required;
     publishedAt: Attribute.DateTime;
     slug: Attribute.Text & Attribute.Required;
