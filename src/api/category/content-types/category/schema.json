@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "department": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::department.department",
+      "inversedBy": "categories"
+    },
+    "slug": {
+      "type": "text",
+      "required": true
+    },
+    "shops": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shop.shop",
+      "mappedBy": "categories"
+    }
+  }
+}

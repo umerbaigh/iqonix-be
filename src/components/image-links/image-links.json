@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_image_links_image_links",
+  "info": {
+    "displayName": "image-links"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "link": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
