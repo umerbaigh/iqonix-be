@@ -428,6 +428,7 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    icon: Attribute.Media<'images'> & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
     name: Attribute.String & Attribute.Required;
     publishedAt: Attribute.DateTime;
@@ -435,6 +436,40 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::department.department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    displayName: 'footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.String & Attribute.Required;
+    footer_links1: Attribute.Component<'text-links.text-links', true> &
+      Attribute.Required;
+    footer_links2: Attribute.Component<'text-links.text-links', true> &
+      Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
       'oneToOne',
       'admin::user'
     > &
@@ -475,6 +510,37 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   };
 }
 
+export interface ApiHomeAboutHomeAbout extends Schema.SingleType {
+  collectionName: 'home_abouts';
+  info: {
+    displayName: 'home-about';
+    pluralName: 'home-abouts';
+    singularName: 'home-about';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    about_text: Attribute.Blocks & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-about.home-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-about.home-about',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHeroSectionHomeHeroSection extends Schema.SingleType {
   collectionName: 'home_hero_sections';
   info: {
@@ -501,6 +567,42 @@ export interface ApiHomeHeroSectionHomeHeroSection extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::home-hero-section.home-hero-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeProductCardHomeProductCard
+  extends Schema.CollectionType {
+  collectionName: 'home_product_cards';
+  info: {
+    description: '';
+    displayName: 'home-product-card';
+    pluralName: 'home-product-cards';
+    singularName: 'home-product-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    btn_txt: Attribute.String;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-product-card.home-product-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    tag: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::home-product-card.home-product-card',
       'oneToOne',
       'admin::user'
     > &
@@ -975,8 +1077,11 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
       'api::department.department': ApiDepartmentDepartment;
+      'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
+      'api::home-about.home-about': ApiHomeAboutHomeAbout;
       'api::home-hero-section.home-hero-section': ApiHomeHeroSectionHomeHeroSection;
+      'api::home-product-card.home-product-card': ApiHomeProductCardHomeProductCard;
       'api::shop.shop': ApiShopShop;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

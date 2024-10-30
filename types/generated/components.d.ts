@@ -11,10 +11,22 @@ export interface ImageLinksImageLinks extends Schema.Component {
   };
 }
 
+export interface TextLinksTextLinks extends Schema.Component {
+  collectionName: 'components_text_links_text_links';
+  info: {
+    displayName: 'text-links';
+  };
+  attributes: {
+    link: Attribute.Text & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'image-links.image-links': ImageLinksImageLinks;
+      'text-links.text-links': TextLinksTextLinks;
     }
   }
 }
