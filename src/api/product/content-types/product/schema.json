@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_name": {
+      "type": "string",
+      "required": true
+    },
+    "product_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "short_description": {
+      "type": "string",
+      "required": true
+    },
+    "long_description": {
+      "type": "text",
+      "required": true
+    },
+    "regular_price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "sale_price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "stock_status": {
+      "type": "boolean",
+      "required": true
+    },
+    "product_url": {
+      "type": "text",
+      "required": true
+    },
+    "delivery": {
+      "type": "string",
+      "required": true
+    },
+    "width": {
+      "type": "string",
+      "required": false
+    },
+    "height": {
+      "type": "string",
+      "required": false
+    },
+    "depth": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "departments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::department.department",
+      "inversedBy": "products"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "shops": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shop.shop",
+      "inversedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "products"
+    }
+  }
+}

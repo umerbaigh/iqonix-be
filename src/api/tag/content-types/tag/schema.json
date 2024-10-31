@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "tags",
   "info": {
-    "singularName": "category",
-    "pluralName": "categories",
-    "displayName": "category",
-    "description": ""
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "tag"
   },
   "options": {
     "draftAndPublish": true
@@ -16,15 +15,11 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "text",
-      "required": true
-    },
     "products": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
-      "mappedBy": "categories"
+      "mappedBy": "tags"
     }
   }
 }

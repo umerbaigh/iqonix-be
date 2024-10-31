@@ -4,7 +4,8 @@
   "info": {
     "singularName": "shop",
     "pluralName": "shops",
-    "displayName": "shop"
+    "displayName": "shop",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,22 +17,22 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "slug": {
       "type": "text",
       "required": true
     },
-    "categories": {
+    "products": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "shops"
+      "target": "api::product.product",
+      "mappedBy": "shops"
     }
   }
 }

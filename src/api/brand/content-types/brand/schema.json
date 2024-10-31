@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "brands",
   "info": {
-    "singularName": "category",
-    "pluralName": "categories",
-    "displayName": "category",
-    "description": ""
+    "singularName": "brand",
+    "pluralName": "brands",
+    "displayName": "brand"
   },
   "options": {
     "draftAndPublish": true
@@ -16,15 +15,11 @@
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "text",
-      "required": true
-    },
     "products": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "mappedBy": "categories"
+      "mappedBy": "brand"
     }
   }
 }
