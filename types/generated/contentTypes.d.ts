@@ -416,6 +416,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    department: Attribute.Relation<
+      'api::category.category',
+      'manyToOne',
+      'api::department.department'
+    >;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::category.category',
@@ -446,6 +451,11 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    categories: Attribute.Relation<
+      'api::department.department',
+      'oneToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::department.department',

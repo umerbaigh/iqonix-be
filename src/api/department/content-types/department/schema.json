@@ -41,6 +41,12 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "departments"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "department"
     }
   }
 }
