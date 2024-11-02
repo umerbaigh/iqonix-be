@@ -30,7 +30,7 @@
     "styled-components": "5.3.3"
   },
   "engines": {
-    "node": "20.x.x"
+    "node": "18.x"
   },
   "strapi": {
     "uuid": "fa7ddc43-f8fe-4fd8-a799-d574d987bdc2"
