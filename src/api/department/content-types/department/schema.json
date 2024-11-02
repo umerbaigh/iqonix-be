@@ -47,6 +47,10 @@
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "department"
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
     }
   }
 }

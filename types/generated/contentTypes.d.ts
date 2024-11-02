@@ -464,6 +464,7 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    description: Attribute.Blocks & Attribute.Required;
     icon: Attribute.Media<'images'> & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
     name: Attribute.String & Attribute.Required;
