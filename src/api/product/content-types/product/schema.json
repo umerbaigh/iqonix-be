@@ -16,22 +16,6 @@
       "type": "string",
       "required": true
     },
-    "product_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "short_description": {
-      "type": "string",
-      "required": true
-    },
-    "long_description": {
-      "type": "text",
-      "required": true
-    },
     "regular_price": {
       "type": "decimal",
       "required": true,
@@ -97,6 +81,18 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "products"
+    },
+    "product_image": {
+      "type": "text",
+      "required": true
+    },
+    "long_description": {
+      "type": "richtext",
+      "required": true
+    },
+    "short_description": {
+      "type": "text",
+      "required": true
     }
   }
 }

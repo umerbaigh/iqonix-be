@@ -365,6 +365,7 @@ export interface AdminUser extends Schema.CollectionType {
 export interface ApiBrandBrand extends Schema.CollectionType {
   collectionName: 'brands';
   info: {
+    description: '';
     displayName: 'brand';
     pluralName: 'brands';
     singularName: 'brand';
@@ -380,6 +381,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    html: Attribute.Blocks;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::brand.brand',
@@ -387,6 +389,8 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'api::product.product'
     >;
     publishedAt: Attribute.DateTime;
+    test2: Attribute.Text;
+    text: Attribute.RichText;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::brand.brand',
@@ -688,8 +692,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     depth: Attribute.String;
     height: Attribute.String;
-    long_description: Attribute.Text & Attribute.Required;
-    product_image: Attribute.Media<'images'> & Attribute.Required;
+    long_description: Attribute.RichText & Attribute.Required;
+    product_image: Attribute.Text & Attribute.Required;
     product_name: Attribute.String & Attribute.Required;
     product_url: Attribute.Text & Attribute.Required;
     publishedAt: Attribute.DateTime;
@@ -714,7 +718,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::shop.shop'
     >;
-    short_description: Attribute.String & Attribute.Required;
+    short_description: Attribute.Text & Attribute.Required;
     stock_status: Attribute.Boolean & Attribute.Required;
     tags: Attribute.Relation<
       'api::product.product',
