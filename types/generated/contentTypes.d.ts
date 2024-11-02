@@ -381,7 +381,6 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    html: Attribute.Blocks;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::brand.brand',
@@ -389,8 +388,6 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'api::product.product'
     >;
     publishedAt: Attribute.DateTime;
-    test2: Attribute.Text;
-    text: Attribute.RichText;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::brand.brand',

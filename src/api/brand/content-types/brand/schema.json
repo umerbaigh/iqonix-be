@@ -21,15 +21,6 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "brand"
-    },
-    "html": {
-      "type": "blocks"
-    },
-    "text": {
-      "type": "richtext"
-    },
-    "test2": {
-      "type": "text"
     }
   }
 }
