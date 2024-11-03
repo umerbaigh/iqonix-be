@@ -31,6 +31,9 @@
       "relation": "manyToOne",
       "target": "api::department.department",
       "inversedBy": "categories"
+    },
+    "description": {
+      "type": "blocks"
     }
   }
 }

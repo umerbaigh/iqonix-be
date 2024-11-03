@@ -422,6 +422,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToOne',
       'api::department.department'
     >;
+    description: Attribute.Blocks;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::category.category',
