@@ -410,11 +410,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    categories: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::category.category'
-    >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::category.category',
@@ -428,6 +423,9 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::department.department'
     >;
     description: Attribute.Blocks;
+    is_top_level: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::category.category',
@@ -436,6 +434,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     publishedAt: Attribute.DateTime;
     slug: Attribute.Text & Attribute.Required;
+    sub_categories: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::category.category'
+    >;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::category.category',

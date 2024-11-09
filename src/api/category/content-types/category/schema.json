@@ -35,7 +35,12 @@
     "description": {
       "type": "blocks"
     },
-    "categories": {
+    "is_top_level": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "sub_categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
