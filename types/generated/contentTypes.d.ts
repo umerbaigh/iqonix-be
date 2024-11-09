@@ -422,10 +422,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToOne',
       'api::department.department'
     >;
-    description: Attribute.Blocks;
-    is_top_level: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
+    description: Attribute.RichText;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::category.category',

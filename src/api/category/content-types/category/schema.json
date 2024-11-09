@@ -32,18 +32,14 @@
       "target": "api::department.department",
       "inversedBy": "categories"
     },
-    "description": {
-      "type": "blocks"
-    },
-    "is_top_level": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
     "sub_categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
+    },
+    "description": {
+      "type": "richtext",
+      "required": false
     }
   }
 }
