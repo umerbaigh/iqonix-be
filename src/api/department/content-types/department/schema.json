@@ -49,7 +49,7 @@
       "mappedBy": "department"
     },
     "description": {
-      "type": "blocks",
+      "type": "richtext",
       "required": true
     }
   }
