@@ -93,6 +93,10 @@
     "short_description": {
       "type": "text",
       "required": true
+    },
+    "slug": {
+      "type": "text",
+      "required": true
     }
   }
 }

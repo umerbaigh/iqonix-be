@@ -723,6 +723,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::shop.shop'
     >;
     short_description: Attribute.Text & Attribute.Required;
+    slug: Attribute.Text & Attribute.Required;
     stock_status: Attribute.Boolean & Attribute.Required;
     tags: Attribute.Relation<
       'api::product.product',
