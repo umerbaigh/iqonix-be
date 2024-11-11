@@ -4,7 +4,8 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "tag"
+    "displayName": "tag",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,10 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "tags"
+    },
+    "slug": {
+      "type": "string",
+      "required": true
     }
   }
 }

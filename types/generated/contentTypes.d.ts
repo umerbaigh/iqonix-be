@@ -374,6 +374,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    brand_image: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::brand.brand',
@@ -381,6 +382,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    description: Attribute.RichText;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::brand.brand',
@@ -388,6 +390,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'api::product.product'
     >;
     publishedAt: Attribute.DateTime;
+    slug: Attribute.Text & Attribute.Required;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::brand.brand',
@@ -774,6 +777,7 @@ export interface ApiShopShop extends Schema.CollectionType {
 export interface ApiTagTag extends Schema.CollectionType {
   collectionName: 'tags';
   info: {
+    description: '';
     displayName: 'tag';
     pluralName: 'tags';
     singularName: 'tag';
@@ -792,6 +796,7 @@ export interface ApiTagTag extends Schema.CollectionType {
       'api::product.product'
     >;
     publishedAt: Attribute.DateTime;
+    slug: Attribute.String & Attribute.Required;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
       Attribute.Private;
