@@ -25,6 +25,12 @@
     "slug": {
       "type": "string",
       "required": true
+    },
+    "tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test.test",
+      "inversedBy": "tags"
     }
   }
 }

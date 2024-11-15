@@ -797,8 +797,32 @@ export interface ApiTagTag extends Schema.CollectionType {
     >;
     publishedAt: Attribute.DateTime;
     slug: Attribute.String & Attribute.Required;
+    tests: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::test.test'>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    displayName: 'test';
+    pluralName: 'tests';
+    singularName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    tags: Attribute.Relation<'api::test.test', 'manyToMany', 'api::tag.tag'>;
+    testId: Attribute.UID & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1250,6 +1274,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::shop.shop': ApiShopShop;
       'api::tag.tag': ApiTagTag;
+      'api::test.test': ApiTestTest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
