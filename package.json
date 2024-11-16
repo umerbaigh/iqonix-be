@@ -22,6 +22,7 @@
     "@strapi/provider-upload-cloudinary": "^5.1.1",
     "@strapi/strapi": "4.25.14",
     "better-sqlite3": "8.6.0",
+    "fuse.js": "^7.0.0",
     "pg": "^8.13.1",
     "pg-connection-string": "^2.7.0",
     "react": "^18.0.0",
