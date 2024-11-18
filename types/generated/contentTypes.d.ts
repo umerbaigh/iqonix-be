@@ -427,6 +427,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     description: Attribute.RichText;
     name: Attribute.String & Attribute.Required;
+    parent: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'api::category.category'
+    >;
     products: Attribute.Relation<
       'api::category.category',
       'manyToMany',
