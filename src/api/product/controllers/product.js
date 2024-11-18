@@ -14,13 +14,7 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
       const products = await strapi.entityService.findMany(
         "api::product.product",
         {
-          fields: [
-            "product_name",
-            "slug",
-            "regular_price",
-            "sale_price",
-            "short_description",
-          ],
+          populate: "*", // Populate all relations (e.g., images, categories, etc.)
         }
       );
 
