@@ -26,17 +26,13 @@
       "required": true,
       "min": 0
     },
-    "stock_status": {
-      "type": "boolean",
-      "required": true
-    },
     "product_url": {
       "type": "text",
       "required": true
     },
     "delivery": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "width": {
       "type": "string",
@@ -82,7 +78,7 @@
       "target": "api::tag.tag",
       "inversedBy": "products"
     },
-    "product_image": {
+    "product_image1": {
       "type": "text",
       "required": true
     },
@@ -97,6 +93,28 @@
     "slug": {
       "type": "text",
       "required": true
+    },
+    "ean": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "type": "string"
+    },
+    "material": {
+      "type": "string"
+    },
+    "product_image2": {
+      "type": "text"
+    },
+    "product_image3": {
+      "type": "text"
+    },
+    "product_image4": {
+      "type": "text"
+    },
+    "product_image5": {
+      "type": "text"
     }
   }
 }

@@ -730,16 +730,22 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    delivery: Attribute.String & Attribute.Required;
+    delivery: Attribute.String;
     departments: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::department.department'
     >;
     depth: Attribute.String;
+    ean: Attribute.String & Attribute.Required;
     height: Attribute.String;
     long_description: Attribute.RichText & Attribute.Required;
-    product_image: Attribute.Text & Attribute.Required;
+    material: Attribute.String;
+    product_image1: Attribute.Text & Attribute.Required;
+    product_image2: Attribute.Text;
+    product_image3: Attribute.Text;
+    product_image4: Attribute.Text;
+    product_image5: Attribute.Text;
     product_name: Attribute.String & Attribute.Required;
     product_url: Attribute.Text & Attribute.Required;
     publishedAt: Attribute.DateTime;
@@ -765,8 +771,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::shop.shop'
     >;
     short_description: Attribute.Text & Attribute.Required;
+    size: Attribute.String;
     slug: Attribute.Text & Attribute.Required;
-    stock_status: Attribute.Boolean & Attribute.Required;
     tags: Attribute.Relation<
       'api::product.product',
       'manyToMany',
