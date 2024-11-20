@@ -654,6 +654,7 @@ export interface ApiHomeProductCardHomeProductCard
       Attribute.Private;
     description: Attribute.Text & Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
+    link: Attribute.Text & Attribute.Required;
     publishedAt: Attribute.DateTime;
     tag: Attribute.String & Attribute.Required;
     title: Attribute.String & Attribute.Required;

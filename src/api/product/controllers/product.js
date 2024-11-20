@@ -9,7 +9,7 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::product.product", ({ strapi }) => ({
   async customFind(ctx) {
     try {
-      const { search_word, page = 1, pageSize = 10 } = ctx.query; // Default to page 1 and pageSize 10
+      const { search_word, page = 1, pageSize = 35 } = ctx.query; // Default to page 1 and pageSize 35
 
       // Fetch all records from the 'product' table
       const products = await strapi.entityService.findMany(
