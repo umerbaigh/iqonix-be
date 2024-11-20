@@ -500,6 +500,7 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
+    description: '';
     displayName: 'footer';
     pluralName: 'footers';
     singularName: 'footer';
@@ -516,9 +517,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     > &
       Attribute.Private;
     description: Attribute.String & Attribute.Required;
-    footer_links1: Attribute.Component<'text-links.text-links', true> &
-      Attribute.Required;
-    footer_links2: Attribute.Component<'text-links.text-links', true> &
+    footer_links: Attribute.Component<'text-links.text-links', true> &
       Attribute.Required;
     publishedAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

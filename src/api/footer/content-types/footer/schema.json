@@ -4,7 +4,8 @@
   "info": {
     "singularName": "footer",
     "pluralName": "footers",
-    "displayName": "footer"
+    "displayName": "footer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,8 @@
       "type": "string",
       "required": true
     },
-    "footer_links1": {
+    "footer_links": {
       "displayName": "text-links",
-      "type": "component",
-      "repeatable": true,
-      "component": "text-links.text-links",
-      "required": true
-    },
-    "footer_links2": {
       "type": "component",
       "repeatable": true,
       "component": "text-links.text-links",
