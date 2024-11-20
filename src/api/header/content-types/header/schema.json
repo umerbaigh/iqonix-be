@@ -4,7 +4,8 @@
   "info": {
     "singularName": "header",
     "pluralName": "headers",
-    "displayName": "header"
+    "displayName": "header",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,12 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "search_placeholder": {
       "type": "string",
@@ -27,6 +28,12 @@
       "type": "component",
       "repeatable": true,
       "component": "image-links.image-links",
+      "required": true
+    },
+    "nav_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "header-links.header-links",
       "required": true
     }
   }

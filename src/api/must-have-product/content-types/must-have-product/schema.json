@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "must_have_products",
+  "info": {
+    "singularName": "must-have-product",
+    "pluralName": "must-have-products",
+    "displayName": "must-have-product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "search_words": {
+      "type": "component",
+      "repeatable": true,
+      "component": "icon-text.icon-text",
+      "required": true
+    }
+  }
+}

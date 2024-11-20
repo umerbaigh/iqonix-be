@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_icon_text_icon_texts",
+  "info": {
+    "displayName": "icon-text"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

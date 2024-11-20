@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "shop_by_categories",
+  "info": {
+    "singularName": "shop-by-category",
+    "pluralName": "shop-by-categories",
+    "displayName": "shop-by-category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "category_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "category-links.category-links",
+      "required": true
+    }
+  }
+}

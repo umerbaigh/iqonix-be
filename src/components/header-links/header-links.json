@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_header_links_header_links",
+  "info": {
+    "displayName": "header-links"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "text",
+      "required": true
+    },
+    "dropdown_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text-links.text-links",
+      "required": true
+    }
+  }
+}

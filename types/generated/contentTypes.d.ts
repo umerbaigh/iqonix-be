@@ -479,8 +479,6 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
     > &
       Attribute.Private;
     description: Attribute.RichText & Attribute.Required;
-    icon: Attribute.Media<'images'> & Attribute.Required;
-    image: Attribute.Media<'images'> & Attribute.Required;
     name: Attribute.String & Attribute.Required;
     products: Attribute.Relation<
       'api::department.department',
@@ -536,6 +534,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
 export interface ApiHeaderHeader extends Schema.SingleType {
   collectionName: 'headers';
   info: {
+    description: '';
     displayName: 'header';
     pluralName: 'headers';
     singularName: 'header';
@@ -552,6 +551,8 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     > &
       Attribute.Private;
     logo: Attribute.Media<'images'> & Attribute.Required;
+    nav_links: Attribute.Component<'header-links.header-links', true> &
+      Attribute.Required;
     publishedAt: Attribute.DateTime;
     search_placeholder: Attribute.String & Attribute.Required;
     social_links: Attribute.Component<'image-links.image-links', true> &
@@ -666,6 +667,39 @@ export interface ApiHomeProductCardHomeProductCard
   };
 }
 
+export interface ApiMustHaveProductMustHaveProduct extends Schema.SingleType {
+  collectionName: 'must_have_products';
+  info: {
+    displayName: 'must-have-product';
+    pluralName: 'must-have-products';
+    singularName: 'must-have-product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::must-have-product.must-have-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text & Attribute.Required;
+    publishedAt: Attribute.DateTime;
+    search_words: Attribute.Component<'icon-text.icon-text', true> &
+      Attribute.Required;
+    title: Attribute.Text & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::must-have-product.must-have-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -746,6 +780,39 @@ export interface ApiProductProduct extends Schema.CollectionType {
     > &
       Attribute.Private;
     width: Attribute.String;
+  };
+}
+
+export interface ApiShopByCategoryShopByCategory extends Schema.SingleType {
+  collectionName: 'shop_by_categories';
+  info: {
+    description: '';
+    displayName: 'shop-by-category';
+    pluralName: 'shop-by-categories';
+    singularName: 'shop-by-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category_links: Attribute.Component<'category-links.category-links', true> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shop-by-category.shop-by-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    publishedAt: Attribute.DateTime;
+    title: Attribute.Text & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::shop-by-category.shop-by-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1276,7 +1343,9 @@ declare module '@strapi/types' {
       'api::home-about.home-about': ApiHomeAboutHomeAbout;
       'api::home-hero-section.home-hero-section': ApiHomeHeroSectionHomeHeroSection;
       'api::home-product-card.home-product-card': ApiHomeProductCardHomeProductCard;
+      'api::must-have-product.must-have-product': ApiMustHaveProductMustHaveProduct;
       'api::product.product': ApiProductProduct;
+      'api::shop-by-category.shop-by-category': ApiShopByCategoryShopByCategory;
       'api::shop.shop': ApiShopShop;
       'api::tag.tag': ApiTagTag;
       'api::test.test': ApiTestTest;
