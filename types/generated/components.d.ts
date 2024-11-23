@@ -15,11 +15,11 @@ export interface CategoryLinksCategoryLinks extends Schema.Component {
 export interface HeaderLinksHeaderLinks extends Schema.Component {
   collectionName: 'components_header_links_header_links';
   info: {
+    description: '';
     displayName: 'header-links';
   };
   attributes: {
-    dropdown_links: Attribute.Component<'text-links.text-links', true> &
-      Attribute.Required;
+    dropdown_links: Attribute.Component<'text-links.text-links', true>;
     link: Attribute.Text & Attribute.Required;
     text: Attribute.String & Attribute.Required;
   };
@@ -28,10 +28,12 @@ export interface HeaderLinksHeaderLinks extends Schema.Component {
 export interface IconTextIconText extends Schema.Component {
   collectionName: 'components_icon_text_icon_texts';
   info: {
+    description: '';
     displayName: 'icon-text';
   };
   attributes: {
     icon: Attribute.Media<'images'> & Attribute.Required;
+    link: Attribute.Text & Attribute.Required;
     text: Attribute.String & Attribute.Required;
   };
 }
