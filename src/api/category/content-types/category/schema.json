@@ -32,11 +32,6 @@
       "target": "api::department.department",
       "inversedBy": "categories"
     },
-    "sub_categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
-    },
     "description": {
       "type": "richtext",
       "required": false

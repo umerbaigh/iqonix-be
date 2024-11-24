@@ -439,11 +439,6 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     publishedAt: Attribute.DateTime;
     slug: Attribute.Text & Attribute.Required;
-    sub_categories: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::category.category'
-    >;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::category.category',
@@ -509,6 +504,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
+    copyright: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::footer.footer',
@@ -518,6 +514,8 @@ export interface ApiFooterFooter extends Schema.SingleType {
       Attribute.Private;
     description: Attribute.String & Attribute.Required;
     footer_links: Attribute.Component<'text-links.text-links', true> &
+      Attribute.Required;
+    footer_links2: Attribute.Component<'text-links.text-links', true> &
       Attribute.Required;
     publishedAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
