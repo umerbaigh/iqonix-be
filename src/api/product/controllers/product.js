@@ -9,15 +9,42 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::product.product", ({ strapi }) => ({
   async customFind(ctx) {
     try {
-      const { search_word, page = 1, pageSize = 35 } = ctx.query; // Default to page 1 and pageSize 35
+      const { search_word, page = 1, pageSize = 35, all = false } = ctx.query; // Default to page 1 and pageSize 35
 
       // Fetch all records from the 'product' table
-      const products = await strapi.entityService.findMany(
-        "api::product.product",
-        {
-          populate: "*", // Populate all relations (e.g., images, categories, etc.)
-        }
-      );
+      const products = all
+        ? await strapi.entityService.findMany("api::product.product", {
+            fields: [
+              "product_name",
+              "short_description",
+              "sale_price",
+              "regular_price",
+              "color",
+              "delivery",
+              "width",
+              "height",
+              "depth",
+            ], // Specify only the fields to fetch
+          })
+        : await strapi.entityService.findMany("api::product.product", {
+            fields: [
+              "product_name",
+              "short_description",
+              "sale_price",
+              "regular_price",
+              "product_image1",
+              "product_url",
+              "slug",
+            ], // Specify only the fields to fetch
+            populate: {
+              shops: {
+                fields: ["name", "slug"], // Specify only the fields to fetch from the 'shops' table
+              },
+              categories: {
+                fields: ["name", "slug"], // Specify only the fields to fetch from the 'categories' table
+              },
+            },
+          });
 
       let filteredEntries = products;
 
@@ -39,7 +66,7 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
 
       // Return paginated results with metadata
       return {
-        data: paginatedEntries,
+        data: all ? filteredEntries : paginatedEntries,
         meta: {
           total: filteredEntries.length,
           page: parseInt(page, 10),
