@@ -449,6 +449,39 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCookieCookie extends Schema.SingleType {
+  collectionName: 'cookies';
+  info: {
+    description: '';
+    displayName: 'cookie';
+    pluralName: 'cookies';
+    singularName: 'cookie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    btn_txt: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cookie.cookie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    page_link: Attribute.Component<'text-links.text-links'>;
+    publishedAt: Attribute.DateTime;
+    text: Attribute.Text & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::cookie.cookie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDepartmentDepartment extends Schema.CollectionType {
   collectionName: 'departments';
   info: {
@@ -1340,6 +1373,7 @@ declare module '@strapi/types' {
       'admin::user': AdminUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::cookie.cookie': ApiCookieCookie;
       'api::department.department': ApiDepartmentDepartment;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
