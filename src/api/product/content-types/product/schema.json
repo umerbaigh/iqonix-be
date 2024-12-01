@@ -48,28 +48,10 @@
     "color": {
       "type": "string"
     },
-    "departments": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::department.department",
-      "inversedBy": "products"
-    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "products"
-    },
-    "shops": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::shop.shop",
-      "inversedBy": "products"
-    },
-    "brand": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::brand.brand",
       "inversedBy": "products"
     },
     "tags": {
@@ -115,6 +97,18 @@
     },
     "product_image5": {
       "type": "text"
+    },
+    "shops": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shop.shop",
+      "mappedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
     }
   }
 }

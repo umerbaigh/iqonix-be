@@ -20,12 +20,6 @@
       "type": "text",
       "required": true
     },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "departments"
-    },
     "categories": {
       "type": "relation",
       "relation": "oneToMany",

@@ -16,12 +16,6 @@
       "type": "string",
       "required": true
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "brand"
-    },
     "description": {
       "type": "richtext",
       "required": false
@@ -33,6 +27,12 @@
     "brand_image": {
       "type": "text",
       "required": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "brand"
     }
   }
 }

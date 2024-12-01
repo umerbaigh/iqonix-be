@@ -32,7 +32,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::product.product",
-      "mappedBy": "shops"
+      "inversedBy": "shops"
     }
   }
 }
