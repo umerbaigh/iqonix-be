@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 
 /**
@@ -9,11 +10,42 @@ const { createCoreController } = require("@strapi/strapi").factories;
 module.exports = createCoreController("api::product.product", ({ strapi }) => ({
   async customFind(ctx) {
     try {
-      const { search_word, page = 1, pageSize = 35, all = false } = ctx.query; // Default to page 1 and pageSize 35
+      const {
+        search_word,
+        page = 1,
+        pageSize = 35,
+        all = false,
+        color,
+        width,
+        height,
+        depth,
+        delivery,
+        size,
+        material,
+        min_sale_price,
+        max_sale_price,
+        sort,
+      } = ctx.query; // Default to page 1 and pageSize 35
 
+      const productFilters = {};
+
+      if (color) productFilters.color = { $eq: color.split("_").join(" ") };
+      if (width) productFilters.width = { $eq: width.split("_").join(" ") };
+      if (height) productFilters.height = { $eq: height.split("_").join(" ") };
+      if (depth) productFilters.depth = { $eq: depth.split("_").join(" ") };
+      if (delivery)
+        productFilters.delivery = { $eq: delivery.split("_").join(" ") };
+      if (size) productFilters.size = { $eq: size.split("_").join(" ") };
+      if (material)
+        productFilters.material = { $eq: material.split("_").join(" ") };
+      if (min_sale_price)
+        productFilters.sale_price = { $gte: parseFloat(min_sale_price) };
+      if (max_sale_price)
+        productFilters.sale_price = { $lte: parseFloat(max_sale_price) };
       // Fetch all records from the 'product' table
       const products = all
         ? await strapi.entityService.findMany("api::product.product", {
+            filters: productFilters,
             fields: [
               "product_name",
               "short_description",
@@ -24,9 +56,10 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
               "width",
               "height",
               "depth",
-            ], // Specify only the fields to fetch
+            ],
           })
         : await strapi.entityService.findMany("api::product.product", {
+            filters: productFilters,
             fields: [
               "product_name",
               "short_description",
@@ -57,6 +90,21 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
 
         const searchResults = fuse.search(search_word);
         filteredEntries = searchResults.map((result) => result.item);
+      }
+      if (sort) {
+        if (sort === "createdAt") {
+          filteredEntries.sort(
+            (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+          );
+        } else if (sort === "-createdAt") {
+          filteredEntries.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+        } else if (sort === "sale_price") {
+          filteredEntries.sort((a, b) => a.sale_price - b.sale_price);
+        } else if (sort === "-sale_price") {
+          filteredEntries.sort((a, b) => b.sale_price - a.sale_price);
+        }
       }
 
       // Implement pagination
