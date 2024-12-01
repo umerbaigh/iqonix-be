@@ -195,7 +195,6 @@ module.exports = createCoreController(
 
         if (parseInt(page, 10) === -1) {
           return {
-            category,
             products: allProducts,
             meta: {
               total: allProducts.length,
@@ -210,7 +209,6 @@ module.exports = createCoreController(
         const endIndex = startIndex + parseInt(pageSize, 10);
         const paginatedEntries = allProducts.slice(startIndex, endIndex);
         return {
-          category,
           products: paginatedEntries,
           meta: {
             total: paginatedEntries.length,
