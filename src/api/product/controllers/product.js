@@ -56,6 +56,8 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
               "width",
               "height",
               "depth",
+              "size",
+              "material",
             ],
           })
         : await strapi.entityService.findMany("api::product.product", {
