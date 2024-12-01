@@ -508,6 +508,11 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
       Attribute.Private;
     description: Attribute.RichText & Attribute.Required;
     name: Attribute.String & Attribute.Required;
+    products: Attribute.Relation<
+      'api::department.department',
+      'manyToMany',
+      'api::product.product'
+    >;
     publishedAt: Attribute.DateTime;
     slug: Attribute.Text & Attribute.Required;
     updatedAt: Attribute.DateTime;
@@ -757,6 +762,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     > &
       Attribute.Private;
     delivery: Attribute.String;
+    departments: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::department.department'
+    >;
     depth: Attribute.String;
     ean: Attribute.String & Attribute.Required;
     height: Attribute.String;
