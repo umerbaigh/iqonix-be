@@ -75,7 +75,10 @@ module.exports = createCoreController(
         }
 
         // Helper function to recursively fetch products for a category and its subcategories
-        const fetchProductsRecursively = async (categoryId) => {
+        const fetchProductsRecursively = async (
+          categoryId,
+          reducedFields = false
+        ) => {
           const products = [];
 
           // Construct dynamic product filters based on query parameters
@@ -96,6 +99,37 @@ module.exports = createCoreController(
           if (max_sale_price)
             productFilters.sale_price = { $lte: parseFloat(max_sale_price) };
 
+          const productFields = reducedFields
+            ? [
+                "sale_price",
+                "color",
+                "delivery",
+                "width",
+                "height",
+                "depth",
+                "size",
+                "material",
+              ]
+            : [
+                "product_name",
+                "regular_price",
+                "sale_price",
+                "product_image1",
+                "product_url",
+                "slug",
+              ];
+
+          const productPopulate = !reducedFields
+            ? {
+                shops: {
+                  fields: ["id", "name", "slug"], // Include only id, name, and slug for shops relation
+                },
+                categories: {
+                  fields: ["id", "name", "slug"], // Include only id, name, and slug for categories relation
+                },
+              }
+            : {};
+
           // Fetch products for the current category
           const currentCategory = await strapi.entityService.findOne(
             "api::category.category",
@@ -103,7 +137,9 @@ module.exports = createCoreController(
             {
               populate: {
                 products: {
-                  filters: productFilters, // Apply filters to products
+                  filters: productFilters,
+                  fields: productFields, // Select specific fields if reducedFields is true
+                  populate: productPopulate, // Select specific relations if reducedFields is true
                 },
               },
             }
@@ -124,7 +160,8 @@ module.exports = createCoreController(
           // Recursively fetch products for each subcategory
           for (const subcategory of subcategories) {
             const subcategoryProducts = await fetchProductsRecursively(
-              subcategory.id
+              subcategory.id,
+              reducedFields
             );
             products.push(...subcategoryProducts);
           }
@@ -132,8 +169,14 @@ module.exports = createCoreController(
           return products;
         };
 
+        let allProducts = [];
         // Fetch all products for the category and its subcategories
-        const allProducts = await fetchProductsRecursively(category.id);
+        if (parseInt(page, 10) === -1) {
+          allProducts = await fetchProductsRecursively(category.id, true);
+        } else {
+          allProducts = await fetchProductsRecursively(category.id);
+        }
+
         if (sort) {
           if (sort === "createdAt") {
             allProducts.sort(
@@ -149,6 +192,7 @@ module.exports = createCoreController(
             allProducts.sort((a, b) => b.sale_price - a.sale_price);
           }
         }
+
         if (parseInt(page, 10) === -1) {
           return {
             category,
