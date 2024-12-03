@@ -15,6 +15,7 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
         page = 1,
         pageSize = 35,
         all = false,
+        sales = false,
         color,
         width,
         height,
@@ -93,6 +94,13 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
         const searchResults = fuse.search(search_word);
         filteredEntries = searchResults.map((result) => result.item);
       }
+
+      if (sales) {
+        filteredEntries = filteredEntries.filter(
+          (product) => product.sale_price !== product.regular_price
+        );
+      }
+
       if (sort) {
         if (sort === "createdAt") {
           filteredEntries.sort(

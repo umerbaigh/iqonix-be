@@ -23,7 +23,7 @@
     },
     "sale_price": {
       "type": "decimal",
-      "required": false,
+      "required": true,
       "min": 0
     },
     "product_url": {

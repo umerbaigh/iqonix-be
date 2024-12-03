@@ -789,6 +789,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         number
       >;
     sale_price: Attribute.Decimal &
+      Attribute.Required &
       Attribute.SetMinMax<
         {
           min: 0;

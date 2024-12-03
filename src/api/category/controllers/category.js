@@ -43,6 +43,7 @@ module.exports = createCoreController(
       try {
         const { slug } = ctx.params;
         const {
+          sales = false,
           color,
           width,
           height,
@@ -175,6 +176,12 @@ module.exports = createCoreController(
           allProducts = await fetchProductsRecursively(category.id, true);
         } else {
           allProducts = await fetchProductsRecursively(category.id);
+        }
+
+        if (sales) {
+          allProducts = allProducts.filter(
+            (product) => product.sale_price !== product.regular_price
+          );
         }
 
         if (sort) {
