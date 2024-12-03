@@ -179,7 +179,7 @@ module.exports = createCoreController(
         }
 
         if (sales) {
-          allProducts = allProducts.filter(
+          allProducts = await allProducts.filter(
             (product) => product.sale_price !== product.regular_price
           );
         }

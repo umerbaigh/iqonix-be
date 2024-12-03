@@ -96,7 +96,7 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
       }
 
       if (sales) {
-        filteredEntries = filteredEntries.filter(
+        filteredEntries = await filteredEntries.filter(
           (product) => product.sale_price !== product.regular_price
         );
       }
