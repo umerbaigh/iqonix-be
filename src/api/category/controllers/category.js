@@ -103,6 +103,7 @@ module.exports = createCoreController(
           const productFields = reducedFields
             ? [
                 "sale_price",
+                "regular_price",
                 "color",
                 "delivery",
                 "width",
@@ -178,7 +179,7 @@ module.exports = createCoreController(
           allProducts = await fetchProductsRecursively(category.id);
         }
 
-        if (sales) {
+        if (sales === "true") {
           allProducts = await allProducts.filter(
             (product) => product.sale_price !== product.regular_price
           );
