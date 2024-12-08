@@ -329,6 +329,72 @@ module.exports = createCoreController(
           );
         }
 
+        const countUniqueValues = (field) => {
+          return allProducts.reduce((acc, product) => {
+            const value = product[field];
+            if (value) {
+              const key = value; // Handle underscores in filter values
+              acc[key] = (acc[key] || 0) + 1;
+            }
+            return acc;
+          }, {});
+        };
+
+        // Count unique values for each filter
+        const filtersCount = {
+          furniture_color: countUniqueValues("furniture_color"),
+          furniture_material: countUniqueValues("furniture_material"),
+          delivery: countUniqueValues("delivery"),
+          breite: countUniqueValues("breite"),
+          hoehe: countUniqueValues("hoehe"),
+          tiefe: countUniqueValues("tiefe"),
+          damen_normalgr: countUniqueValues("damen_normalgr"),
+          damen_jeansgr: countUniqueValues("damen_jeansgr"),
+          damen_kurzgr: countUniqueValues("damen_kurzgr"),
+          damen_langgr: countUniqueValues("damen_langgr"),
+          cup_gr: countUniqueValues("cup_gr"),
+          brustumfang: countUniqueValues("brustumfang"),
+          miederhosengr: countUniqueValues("miederhosengr"),
+          strumpfhosengr: countUniqueValues("strumpfhosengr"),
+          sockengr: countUniqueValues("sockengr"),
+          herren_normalgr: countUniqueValues("herren_normalgr"),
+          herren_jeansgr: countUniqueValues("herren_jeansgr"),
+          kragenweite: countUniqueValues("kragenweite"),
+          herren_untersetztgr: countUniqueValues("herren_untersetztgr"),
+          herren_schlankgr: countUniqueValues("herren_schlankgr"),
+          waschegr: countUniqueValues("waschegr"),
+          herren_bauchgr: countUniqueValues("herren_bauchgr"),
+          baby_normalgr: countUniqueValues("baby_normalgr"),
+          kinder_normalg: countUniqueValues("kinder_normalg"),
+          kinder_sockengr: countUniqueValues("kinder_sockengr"),
+          schuhgr: countUniqueValues("schuhgr"),
+          kinder_schuhgr: countUniqueValues("kinder_schuhgr"),
+          fashion_material: countUniqueValues("fashion_material"),
+          fashion_color: countUniqueValues("fashion_color"),
+          shoes_material: countUniqueValues("shoes_material"),
+          shoes_color: countUniqueValues("shoes_color"),
+        };
+
+        if (parseInt(page, 10) === -1) {
+          return {
+            data: filtersCount,
+            price: {
+              min: Math.min(
+                ...allProducts.map((product) => product.sale_price)
+              ),
+              max: Math.max(
+                ...allProducts.map((product) => product.sale_price)
+              ),
+            },
+            meta: {
+              total: allProducts.length,
+              page: -1,
+              pageSize: allProducts.length,
+              totalPages: 1,
+            },
+          };
+        }
+
         if (sort) {
           if (sort === "createdAt") {
             allProducts.sort(
@@ -343,18 +409,6 @@ module.exports = createCoreController(
           } else if (sort === "-sale_price") {
             allProducts.sort((a, b) => b.sale_price - a.sale_price);
           }
-        }
-
-        if (parseInt(page, 10) === -1) {
-          return {
-            products: allProducts,
-            meta: {
-              total: allProducts.length,
-              page: -1,
-              pageSize: allProducts.length,
-              totalPages: 1,
-            },
-          };
         }
 
         const startIndex = (page - 1) * pageSize;

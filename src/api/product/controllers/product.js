@@ -238,6 +238,72 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
         );
       }
 
+      const countUniqueValues = (field) => {
+        return filteredEntries.reduce((acc, product) => {
+          const value = product[field];
+          if (value) {
+            const key = value; // Handle underscores in filter values
+            acc[key] = (acc[key] || 0) + 1;
+          }
+          return acc;
+        }, {});
+      };
+
+      // Count unique values for each filter
+      const filtersCount = {
+        furniture_color: countUniqueValues("furniture_color"),
+        furniture_material: countUniqueValues("furniture_material"),
+        delivery: countUniqueValues("delivery"),
+        breite: countUniqueValues("breite"),
+        hoehe: countUniqueValues("hoehe"),
+        tiefe: countUniqueValues("tiefe"),
+        damen_normalgr: countUniqueValues("damen_normalgr"),
+        damen_jeansgr: countUniqueValues("damen_jeansgr"),
+        damen_kurzgr: countUniqueValues("damen_kurzgr"),
+        damen_langgr: countUniqueValues("damen_langgr"),
+        cup_gr: countUniqueValues("cup_gr"),
+        brustumfang: countUniqueValues("brustumfang"),
+        miederhosengr: countUniqueValues("miederhosengr"),
+        strumpfhosengr: countUniqueValues("strumpfhosengr"),
+        sockengr: countUniqueValues("sockengr"),
+        herren_normalgr: countUniqueValues("herren_normalgr"),
+        herren_jeansgr: countUniqueValues("herren_jeansgr"),
+        kragenweite: countUniqueValues("kragenweite"),
+        herren_untersetztgr: countUniqueValues("herren_untersetztgr"),
+        herren_schlankgr: countUniqueValues("herren_schlankgr"),
+        waschegr: countUniqueValues("waschegr"),
+        herren_bauchgr: countUniqueValues("herren_bauchgr"),
+        baby_normalgr: countUniqueValues("baby_normalgr"),
+        kinder_normalg: countUniqueValues("kinder_normalg"),
+        kinder_sockengr: countUniqueValues("kinder_sockengr"),
+        schuhgr: countUniqueValues("schuhgr"),
+        kinder_schuhgr: countUniqueValues("kinder_schuhgr"),
+        fashion_material: countUniqueValues("fashion_material"),
+        fashion_color: countUniqueValues("fashion_color"),
+        shoes_material: countUniqueValues("shoes_material"),
+        shoes_color: countUniqueValues("shoes_color"),
+      };
+
+      if (all) {
+        return {
+          data: filtersCount,
+          price: {
+            min: Math.min(
+              ...filteredEntries.map((product) => product.sale_price)
+            ),
+            max: Math.max(
+              ...filteredEntries.map((product) => product.sale_price)
+            ),
+          },
+          meta: {
+            total: filteredEntries.length,
+            page: -1,
+            pageSize: filteredEntries.length,
+            totalPages: 1,
+          },
+        };
+      }
+
       if (sort) {
         if (sort === "createdAt") {
           filteredEntries.sort(
@@ -261,12 +327,12 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
 
       // Return paginated results with metadata
       return {
-        data: all ? filteredEntries : paginatedEntries,
+        data: paginatedEntries,
         meta: {
-          total: filteredEntries.length,
+          total: paginatedEntries.length,
           page: parseInt(page, 10),
           pageSize: parseInt(pageSize, 10),
-          pageCount: Math.ceil(filteredEntries.length / pageSize),
+          pageCount: Math.ceil(paginatedEntries.length / pageSize),
         },
       };
     } catch (error) {
