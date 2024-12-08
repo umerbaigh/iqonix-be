@@ -34,18 +34,18 @@
       "type": "string",
       "required": false
     },
-    "width": {
+    "breite": {
       "type": "string",
       "required": false
     },
-    "height": {
+    "hoehe": {
       "type": "string",
       "required": false
     },
-    "depth": {
+    "tiefe": {
       "type": "string"
     },
-    "color": {
+    "furniture_color": {
       "type": "string"
     },
     "categories": {
@@ -70,7 +70,7 @@
     },
     "short_description": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "slug": {
       "type": "text",
@@ -80,10 +80,7 @@
       "type": "string",
       "required": true
     },
-    "size": {
-      "type": "string"
-    },
-    "material": {
+    "furniture_material": {
       "type": "string"
     },
     "product_image2": {
@@ -115,6 +112,85 @@
       "relation": "manyToMany",
       "target": "api::department.department",
       "mappedBy": "products"
+    },
+    "damen_normalgr": {
+      "type": "string"
+    },
+    "damen_jeansgr": {
+      "type": "string"
+    },
+    "damen_kurzgr": {
+      "type": "string"
+    },
+    "damen_langgr": {
+      "type": "string"
+    },
+    "cup_gr": {
+      "type": "string"
+    },
+    "brustumfang": {
+      "type": "string"
+    },
+    "miederhosengr": {
+      "type": "string"
+    },
+    "strumpfhosengr": {
+      "type": "string"
+    },
+    "sockengr": {
+      "type": "string"
+    },
+    "herren_normalgr": {
+      "type": "string"
+    },
+    "herren_jeansgr": {
+      "type": "string"
+    },
+    "kragenweite": {
+      "type": "string"
+    },
+    "herren_untersetztgr": {
+      "type": "string"
+    },
+    "herren_schlankgr": {
+      "type": "string"
+    },
+    "waschegr": {
+      "type": "string"
+    },
+    "herren_bauchgr": {
+      "type": "string"
+    },
+    "baby_normalgr": {
+      "type": "string"
+    },
+    "kinder_normalg": {
+      "type": "string"
+    },
+    "kinder_sockengr": {
+      "type": "string"
+    },
+    "schuhgr": {
+      "type": "string"
+    },
+    "kinder_schuhgr": {
+      "type": "string"
+    },
+    "fashion_material": {
+      "type": "string"
+    },
+    "fashion_color": {
+      "type": "string"
+    },
+    "shoes_material": {
+      "type": "string"
+    },
+    "shoes_color": {
+      "type": "string"
+    },
+    "iqonix_id": {
+      "type": "string",
+      "unique": false
     }
   }
 }

@@ -743,17 +743,19 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    baby_normalgr: Attribute.String;
     brand: Attribute.Relation<
       'api::product.product',
       'manyToOne',
       'api::brand.brand'
     >;
+    breite: Attribute.String;
+    brustumfang: Attribute.String;
     categories: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::category.category'
     >;
-    color: Attribute.String;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::product.product',
@@ -761,17 +763,35 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    cup_gr: Attribute.String;
+    damen_jeansgr: Attribute.String;
+    damen_kurzgr: Attribute.String;
+    damen_langgr: Attribute.String;
+    damen_normalgr: Attribute.String;
     delivery: Attribute.String;
     departments: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::department.department'
     >;
-    depth: Attribute.String;
     ean: Attribute.String & Attribute.Required;
-    height: Attribute.String;
+    fashion_color: Attribute.String;
+    fashion_material: Attribute.String;
+    furniture_color: Attribute.String;
+    furniture_material: Attribute.String;
+    herren_bauchgr: Attribute.String;
+    herren_jeansgr: Attribute.String;
+    herren_normalgr: Attribute.String;
+    herren_schlankgr: Attribute.String;
+    herren_untersetztgr: Attribute.String;
+    hoehe: Attribute.String;
+    iqonix_id: Attribute.String;
+    kinder_normalg: Attribute.String;
+    kinder_schuhgr: Attribute.String;
+    kinder_sockengr: Attribute.String;
+    kragenweite: Attribute.String;
     long_description: Attribute.RichText & Attribute.Required;
-    material: Attribute.String;
+    miederhosengr: Attribute.String;
     product_image1: Attribute.Text & Attribute.Required;
     product_image2: Attribute.Text;
     product_image3: Attribute.Text;
@@ -796,19 +816,24 @@ export interface ApiProductProduct extends Schema.CollectionType {
         },
         number
       >;
+    schuhgr: Attribute.String;
+    shoes_color: Attribute.String;
+    shoes_material: Attribute.String;
     shops: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::shop.shop'
     >;
-    short_description: Attribute.Text & Attribute.Required;
-    size: Attribute.String;
+    short_description: Attribute.Text;
     slug: Attribute.Text & Attribute.Required;
+    sockengr: Attribute.String;
+    strumpfhosengr: Attribute.String;
     tags: Attribute.Relation<
       'api::product.product',
       'manyToMany',
       'api::tag.tag'
     >;
+    tiefe: Attribute.String;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::product.product',
@@ -816,7 +841,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    width: Attribute.String;
+    waschegr: Attribute.String;
   };
 }
 

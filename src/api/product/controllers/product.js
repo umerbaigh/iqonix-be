@@ -16,13 +16,37 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
         pageSize = 35,
         all = false,
         sales = false,
-        color,
-        width,
-        height,
-        depth,
         delivery,
-        size,
-        material,
+        furniture_color,
+        furniture_material,
+        breite,
+        hoehe,
+        tiefe,
+        damen_normalgr,
+        damen_jeansgr,
+        damen_kurzgr,
+        damen_langgr,
+        cup_gr,
+        brustumfang,
+        miederhosengr,
+        strumpfhosengr,
+        sockengr,
+        herren_normalgr,
+        herren_jeansgr,
+        kragenweite,
+        herren_untersetztgr,
+        herren_schlankgr,
+        waschegr,
+        herren_bauchgr,
+        baby_normalgr,
+        kinder_normalg,
+        kinder_sockengr,
+        schuhgr,
+        kinder_schuhgr,
+        fashion_material,
+        fashion_color,
+        shoes_material,
+        shoes_color,
         min_sale_price,
         max_sale_price,
         sort,
@@ -30,15 +54,104 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
 
       const productFilters = {};
 
-      if (color) productFilters.color = { $eq: color.split("_").join(" ") };
-      if (width) productFilters.width = { $eq: width.split("_").join(" ") };
-      if (height) productFilters.height = { $eq: height.split("_").join(" ") };
-      if (depth) productFilters.depth = { $eq: depth.split("_").join(" ") };
+      if (furniture_color)
+        productFilters.furniture_color = {
+          $eq: furniture_color.split("_").join(" "),
+        };
+      if (furniture_material)
+        productFilters.furniture_material = {
+          $eq: furniture_material.split("_").join(" "),
+        };
+      if (breite) productFilters.breite = { $eq: breite.split("_").join(" ") };
+      if (hoehe) productFilters.hoehe = { $eq: hoehe.split("_").join(" ") };
+      if (tiefe) productFilters.tiefe = { $eq: tiefe.split("_").join(" ") };
       if (delivery)
         productFilters.delivery = { $eq: delivery.split("_").join(" ") };
-      if (size) productFilters.size = { $eq: size.split("_").join(" ") };
-      if (material)
-        productFilters.material = { $eq: material.split("_").join(" ") };
+      if (damen_normalgr)
+        productFilters.damen_normalgr = {
+          $eq: damen_normalgr.split("_").join(" "),
+        };
+      if (damen_jeansgr)
+        productFilters.damen_jeansgr = {
+          $eq: damen_jeansgr.split("_").join(" "),
+        };
+      if (damen_kurzgr)
+        productFilters.damen_kurzgr = {
+          $eq: damen_kurzgr.split("_").join(" "),
+        };
+      if (damen_langgr)
+        productFilters.damen_langgr = {
+          $eq: damen_langgr.split("_").join(" "),
+        };
+      if (cup_gr) productFilters.cup_gr = { $eq: cup_gr.split("_").join(" ") };
+      if (brustumfang)
+        productFilters.brustumfang = { $eq: brustumfang.split("_").join(" ") };
+      if (miederhosengr)
+        productFilters.miederhosengr = {
+          $eq: miederhosengr.split("_").join(" "),
+        };
+      if (strumpfhosengr)
+        productFilters.strumpfhosengr = {
+          $eq: strumpfhosengr.split("_").join(" "),
+        };
+      if (sockengr)
+        productFilters.sockengr = { $eq: sockengr.split("_").join(" ") };
+      if (herren_normalgr)
+        productFilters.herren_normalgr = {
+          $eq: herren_normalgr.split("_").join(" "),
+        };
+      if (herren_jeansgr)
+        productFilters.herren_jeansgr = {
+          $eq: herren_jeansgr.split("_").join(" "),
+        };
+      if (kragenweite)
+        productFilters.kragenweite = { $eq: kragenweite.split("_").join(" ") };
+      if (herren_untersetztgr)
+        productFilters.herren_untersetztgr = {
+          $eq: herren_untersetztgr.split("_").join(" "),
+        };
+      if (herren_schlankgr)
+        productFilters.herren_schlankgr = {
+          $eq: herren_schlankgr.split("_").join(" "),
+        };
+      if (waschegr)
+        productFilters.waschegr = { $eq: waschegr.split("_").join(" ") };
+      if (herren_bauchgr)
+        productFilters.herren_bauchgr = {
+          $eq: herren_bauchgr.split("_").join(" "),
+        };
+      if (baby_normalgr)
+        productFilters.baby_normalgr = {
+          $eq: baby_normalgr.split("_").join(" "),
+        };
+      if (kinder_normalg)
+        productFilters.kinder_normalg = {
+          $eq: kinder_normalg.split("_").join(" "),
+        };
+      if (kinder_sockengr)
+        productFilters.kinder_sockengr = {
+          $eq: kinder_sockengr.split("_").join(" "),
+        };
+      if (schuhgr)
+        productFilters.schuhgr = { $eq: schuhgr.split("_").join(" ") };
+      if (kinder_schuhgr)
+        productFilters.kinder_schuhgr = {
+          $eq: kinder_schuhgr.split("_").join(" "),
+        };
+      if (fashion_material)
+        productFilters.fashion_material = {
+          $eq: fashion_material.split("_").join(" "),
+        };
+      if (fashion_color)
+        productFilters.fashion_color = {
+          $eq: fashion_color.split("_").join(" "),
+        };
+      if (shoes_material)
+        productFilters.shoes_material = {
+          $eq: shoes_material.split("_").join(" "),
+        };
+      if (shoes_color)
+        productFilters.shoes_color = { $eq: shoes_color.split("_").join(" ") };
       if (min_sale_price)
         productFilters.sale_price = { $gte: parseFloat(min_sale_price) };
       if (max_sale_price)
@@ -52,13 +165,37 @@ module.exports = createCoreController("api::product.product", ({ strapi }) => ({
               "short_description",
               "sale_price",
               "regular_price",
-              "color",
               "delivery",
-              "width",
-              "height",
-              "depth",
-              "size",
-              "material",
+              "furniture_color",
+              "furniture_material",
+              "breite",
+              "hoehe",
+              "tiefe",
+              "damen_normalgr",
+              "damen_jeansgr",
+              "damen_kurzgr",
+              "damen_langgr",
+              "cup_gr",
+              "brustumfang",
+              "miederhosengr",
+              "strumpfhosengr",
+              "sockengr",
+              "herren_normalgr",
+              "herren_jeansgr",
+              "kragenweite",
+              "herren_untersetztgr",
+              "herren_schlankgr",
+              "waschegr",
+              "herren_bauchgr",
+              "baby_normalgr",
+              "kinder_normalg",
+              "kinder_sockengr",
+              "schuhgr",
+              "kinder_schuhgr",
+              "fashion_material",
+              "fashion_color",
+              "shoes_material",
+              "shoes_color",
             ],
           })
         : await strapi.entityService.findMany("api::product.product", {
