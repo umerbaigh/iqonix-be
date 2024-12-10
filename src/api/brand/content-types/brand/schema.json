@@ -24,10 +24,6 @@
       "type": "text",
       "required": true
     },
-    "brand_image": {
-      "type": "text",
-      "required": true
-    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",
